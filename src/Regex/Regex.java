@@ -3,7 +3,7 @@ package Regex;
 public class Regex {
     public static void main(String[] args) {
 //        boolean isMatch = parsePhoneNumber("4222.334.5675");
-        boolean isMatch2 = parseString("Lark");
+        boolean isMatch2 = parseString("stark");
         System.out.println(isMatch2);
     }
 
@@ -18,7 +18,7 @@ public class Regex {
 //         Write a regex that would match the following words: Dark, bark, Lark
 //         1. For extra challenge, could you additionally make it match: stark
         String finalStr = str;
-        String regexStr = "[LDbs]t?ark";
+        String regexStr = "[LDb]?(st)?ark";
         return finalStr.matches(regexStr);
      }
 }
