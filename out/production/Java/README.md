@@ -1,1 +1,0 @@
-This is a repo of stuff I come across while learning Java.
