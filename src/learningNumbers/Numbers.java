@@ -3,12 +3,18 @@ package learningNumbers;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Numbers {
     public static void main(String[] args) {
 //        System.out.println(calcCentrifugalForce(3.0, 0.2, 0.8));
-        System.out.println(calcCompoundInterest("10000", ".08", "10", "1000"));
+//        System.out.println(calcCompoundInterest("10000", ".08", "10", "1000"));
+//        decimalFormatter();
+//        System.out.printf("%,(.2f%n", 9989878787600.00);
+        wrapperClasses();
     }
 
     /**
@@ -50,7 +56,7 @@ public class Numbers {
      * @param y number of years.
      * @return
      */
-    public static BigDecimal calcCompoundInterest(String p, String r, String y, String con) {
+    public static String calcCompoundInterest(String p, String r, String y, String con) {
         BigDecimal principal = new BigDecimal(p);
         BigDecimal rate = new BigDecimal(r);
         BigDecimal contribution = new BigDecimal(con);
@@ -59,6 +65,27 @@ public class Numbers {
         BigDecimal firstPart = principal.multiply(common);
         BigDecimal secondPart = (common.subtract(BigDecimal.ONE)).divide(rate);
         BigDecimal finalSecondPart = contribution.multiply(secondPart);
-        return firstPart.add(finalSecondPart).round(new MathContext(5, RoundingMode.HALF_UP));
+        BigDecimal amount = firstPart.add(finalSecondPart).round(new MathContext(5, RoundingMode.HALF_UP));
+        return moneyFormatter(amount);
+    }
+
+    public static String moneyFormatter (BigDecimal amount) {
+        NumberFormat moneyFormatter = NumberFormat.getCurrencyInstance();
+        return moneyFormatter.format(amount);
+    }
+
+    public static void decimalFormatter () {
+        DecimalFormat df = new DecimalFormat("$#,###.00");
+        DecimalFormat pf = new DecimalFormat("#%");
+        System.out.println(df.format(3452313.27382738732));
+        System.out.println(pf.format(.08));
+    }
+
+    public static void calculateFutureAge() {
+        System.out.print("Enter your age: ");
+        Scanner sc = new Scanner(System.in);
+        String ageString = sc.nextLine();
+        int ageIn5Years = Integer.parseInt(ageString);
+        System.out.printf("You will be %d in 5 years", ageIn5Years + 5);
     }
 }
