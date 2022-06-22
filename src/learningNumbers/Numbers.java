@@ -1,21 +1,24 @@
 package learningNumbers;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.Random;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class Numbers {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 //        System.out.println(calcCentrifugalForce(3.0, 0.2, 0.8));
 //        System.out.println(calcCompoundInterest("10000", ".08", "10", "1000"));
 //        decimalFormatter();
 //        System.out.printf("%,(.2f%n", 9989878787600.00);
-        String amountInCAD = convertStringToCurrency("356.678");
-        System.out.println(amountInCAD);
+//        String amountInCAD = convertStringToCurrency("356.678");
+//        System.out.println(amountInCAD);
+        BigDecimal answer = divideTwoNumbers("$12,345.83", "32.19");
+        System.out.println(answer);
     }
 
     /**
@@ -99,5 +102,18 @@ public class Numbers {
         double amountAsInt = Double.parseDouble(str);
         NumberFormat amountInCAD = NumberFormat.getCurrencyInstance();
         return amountInCAD.format(amountAsInt);
+    }
+
+    /**
+     * Takes 2 numbers and divides them
+     * @param num1 The number to be divided as a String
+     * @param num2 The divisor
+     */
+    public static BigDecimal divideTwoNumbers(String num1, String num2) throws ParseException {
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        String currency = nf.parse(num1).toString();
+        BigDecimal number1 = new BigDecimal(currency);
+        BigDecimal number2 = new BigDecimal(num2);
+        return number1.divide(number2, new MathContext(5));
     }
 }
