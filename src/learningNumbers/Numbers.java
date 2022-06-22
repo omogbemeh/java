@@ -14,7 +14,8 @@ public class Numbers {
 //        System.out.println(calcCompoundInterest("10000", ".08", "10", "1000"));
 //        decimalFormatter();
 //        System.out.printf("%,(.2f%n", 9989878787600.00);
-        wrapperClasses();
+        String amountInCAD = convertStringToCurrency("356.678");
+        System.out.println(amountInCAD);
     }
 
     /**
@@ -87,5 +88,16 @@ public class Numbers {
         String ageString = sc.nextLine();
         int ageIn5Years = Integer.parseInt(ageString);
         System.out.printf("You will be %d in 5 years", ageIn5Years + 5);
+    }
+
+    /**
+     * This function takes a string and converts it to CAD.
+     * @param str the amount as a String
+     * @return the amount in CAD as a string
+     */
+    public static String convertStringToCurrency (String str) {
+        double amountAsInt = Double.parseDouble(str);
+        NumberFormat amountInCAD = NumberFormat.getCurrencyInstance();
+        return amountInCAD.format(amountAsInt);
     }
 }
