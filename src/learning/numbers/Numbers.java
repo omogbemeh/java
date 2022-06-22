@@ -1,4 +1,4 @@
-package learningNumbers;
+package learning.numbers;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -7,18 +7,12 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Numbers {
     public static void main(String[] args) throws ParseException {
-//        System.out.println(calcCentrifugalForce(3.0, 0.2, 0.8));
-//        System.out.println(calcCompoundInterest("10000", ".08", "10", "1000"));
-//        decimalFormatter();
-//        System.out.printf("%,(.2f%n", 9989878787600.00);
-//        String amountInCAD = convertStringToCurrency("356.678");
-//        System.out.println(amountInCAD);
-        BigDecimal answer = divideTwoNumbers("$12,345.83", "32.19");
-        System.out.println(answer);
+        addRandomNumbers();
     }
 
     /**
@@ -104,6 +98,14 @@ public class Numbers {
         return amountInCAD.format(amountAsInt);
     }
 
+
+    public static int addRandomNumbers() {
+        Random rand = new Random();
+        int numb = rand.nextInt(10);
+        System.out.println(numb);
+        return 2;
+    }
+
     /**
      * Takes 2 numbers and divides them
      * @param num1 The number to be divided as a String
@@ -115,5 +117,46 @@ public class Numbers {
         BigDecimal number1 = new BigDecimal(currency);
         BigDecimal number2 = new BigDecimal(num2);
         return number1.divide(number2, new MathContext(5));
+    }
+
+    /**
+     * Solution to question 8 in the numbers section of exercise.
+     */
+    public static void formatNumbers() {
+        System.out.printf("$%,.2f%n", 123456.783);
+        System.out.printf("%(,.3f%n", -9876.32532);
+        System.out.printf("%f%n", 23.19283928394829182);
+        System.out.printf("%010d%n", 123456);
+        System.out.printf("%,.1f%n", -9876.35532);
+    }
+
+    /**
+     * Solution to question 9 in the numbers section of exercise.
+     */
+    public static void formatNumbersAndStoreInString() {
+        String str1 = String.format("$%,.2f", 123456.783);
+        String str2 = String.format("%(,.3f", -9876.32532);
+        String str3 = String.format("%f", 23.19283928394829182);
+        String str4 = String.format("%010d", 123456);
+        String str5 = String.format("%,.1f", -9876.35532);
+    }
+
+    /**
+     * Solution to question 10 in the numbers section of exercise.
+     */
+    public static void formatNumbersWithDecimalFormat() {
+        String str1 = new DecimalFormat("$#,###.##").format(123456.783);
+        String str2 = new DecimalFormat("#,###.###;(#,###.##)").format(-9876.32532);
+        String str3 = new DecimalFormat("0000000000").format(123456);
+        String str4 = new DecimalFormat("#,###.#").format(-9876.35532);
+    }
+
+    /**
+     * Solution to question 11 in the numbers section of exercise.
+     */
+    public static int addInts (String str1, String str2) {
+        int num1 = Integer.parseInt(str1);
+        int num2 = Integer.parseInt(str2);
+        return num1 + num2;
     }
 }

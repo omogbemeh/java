@@ -1,4 +1,4 @@
-package learningStrings;
+package learning.strings;
 
 public class Strings {
 }
