@@ -5,18 +5,9 @@ import java.util.Scanner;
 
 public class ControlFlow {
     public static void main(String[] args) {
-        int test = 5;
-        switch (test) {
-            case 3:
-                System.out.println("This is 3 speaking");
-                break;
-            case 5:
-                System.out.println("This is 5 speaking");
-                break;
-            default:
-                System.out.println("No one's talking");
-                break;
-        }
+//      ControlFlow.guessingGame();
+//        printDaysOfTheWeekUsingRegularForLoop2();
+        printAllDaysOfTheWeekUsingWhileLoop2();
     }
     public static void guessingGame() {
         Random randNum = new Random();
@@ -47,4 +38,41 @@ public class ControlFlow {
         return;
     }
 
+/////////////    Solution to Exercises
+    public static void printDaysOfTheWeekUsingRegularForLoop() {
+        String[] daysOfTheWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        for (int i = 0; i < daysOfTheWeek.length; i++) System.out.printf("day: %s%n", daysOfTheWeek[i]);
+    }
+    public static void printDaysOfWeekUsingEnchancedForLoop() {
+        String[] daysOfTheWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        for (String day : daysOfTheWeek) {
+            System.out.printf("day: %s%n", day);
+        }
+    }
+
+//    Capitalizes every other line.
+    public static void printDaysOfTheWeekUsingRegularForLoop2() {
+        String[] daysOfTheWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        for (int i = 0; i < daysOfTheWeek.length; i++) {
+            if (i % 2 != 0) System.out.printf("day: %s%n", daysOfTheWeek[i].toUpperCase());
+            else System.out.printf("day: %s%n", daysOfTheWeek[i]);
+        };
+    }
+
+    public static void printAllDaysOfTheWeekUsingWhileLoop() {
+        String[] daysOfTheWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        int count = daysOfTheWeek.length;
+        while (count > 0) {
+            System.out.printf("day: %s%n", daysOfTheWeek[7 - count]);
+            count--;
+        }
+    }public static void printAllDaysOfTheWeekUsingWhileLoop2() {
+        String[] daysOfTheWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        int count = daysOfTheWeek.length;
+        while (count > 0) {
+            int day = 7 - count;
+            System.out.printf("day: %s%n", day % 2 == 0 ? daysOfTheWeek[day] : daysOfTheWeek[day].toUpperCase());
+            count--;
+        }
+    }
 }

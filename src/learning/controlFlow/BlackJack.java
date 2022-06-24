@@ -10,7 +10,7 @@ public class BlackJack {
             "king", "queen", "jack", "ace"};
 
     public static void main(String[] args) {
-        BlackJack.startGame();
+//        BlackJack.startGame();
     }
 
     public String drawCard() {
