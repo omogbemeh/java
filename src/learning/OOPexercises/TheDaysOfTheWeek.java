@@ -11,8 +11,8 @@ public enum TheDaysOfTheWeek {
     FRIDAY("friday"),
     SATURDAY("saturday");
 
-    private String value;
-    public static TheDaysOfTheWeek[] daysArr = values();
+    private final String value;
+    public static final TheDaysOfTheWeek[] daysArr = values();
 
     TheDaysOfTheWeek(String value) {
         this.value = value;
@@ -27,10 +27,10 @@ public enum TheDaysOfTheWeek {
     }
 
     public static void printDaysCapitalized2() {
-        String dayStr = "";
-        String firstHalf = "";
-        String middleStr = "";
-        String finalStr = "";
+        String dayStr;
+        String firstHalf;
+        String middleStr;
+        String finalStr;
 
         for (TheDaysOfTheWeek day : daysArr) {
             dayStr = day.value;
