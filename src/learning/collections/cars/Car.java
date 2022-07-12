@@ -21,11 +21,37 @@ public class Car {
         this.model = model;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] models) {
+        createAndPrint5Cars();
+
+        List<String> undesirables = new ArrayList<>(List.of(models));
+
+        Map<String, Car> modelsMap = new HashMap<>();
+
+        for (Car car : cars) {
+            modelsMap.put(car.getModel(), car);
+        }
+
+        System.out.printf("There are currently %d items in the modelsMap.%n", modelsMap.size());
+
+        for (Map.Entry<String, Car> etr : modelsMap.entrySet()) {
+            System.out.printf("   >> %s %s%n",etr.getKey(), etr.getValue().toString());
+        }
+
+        for (String str : undesirables) {
+            modelsMap.remove(str);
+        }
+
+        System.out.printf("There are now %d items in the modelsMap.%n", modelsMap.size());
+
+        for (Map.Entry<String, Car> etr : modelsMap.entrySet()) {
+            System.out.printf("  >> %s %s%n",etr.getKey(), etr.getValue().toString());
+        }
+
 //        printCarSet();
 //        assignOwner();
-       createAndPrint5Cars();
-        sortCarsByModel();
+//        sortCarsByModel();
+//        sortCarModelsInDesc();
     }
 
     public static void createAndPrint5Cars() {
@@ -81,6 +107,19 @@ public class Car {
 
         for (Car car : cars) System.out.println(car);
     }
+
+    public static void sortCarModelsInDesc() {
+        Collections.sort(cars, new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                return o2.model.compareTo(o1.model);
+            }
+        });
+
+        for (Car car : cars) System.out.println(car);
+    }
+
+
 
     @Override
     public String toString() {
