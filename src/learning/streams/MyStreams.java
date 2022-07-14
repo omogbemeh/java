@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.FileAttribute;
+import java.text.NumberFormat;
 import java.util.stream.IntStream;
 
 public class MyStreams {
@@ -21,9 +22,20 @@ public class MyStreams {
     }
 
     public static void readFile() {
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+
         try {
-            Files.lines(Path.of("/Users/praise/IdeaProjects/Java/src/learning/streams/test.txt"))
-                    .forEach(System.out::println);
+            long sum = Files.lines(Path.of("/Users/praise/Downloads/Hr5m.csv"))
+                    .skip(1)
+                    .map(Employee::createEmployee)
+                    .mapToLong(Employee::getSalary)
+                    .sum();
+
+            System.out.printf("The total sum is %s", nf.format(sum));
+
+//            Files.lines(Path.of("/Users/praise/Downloads/Hr5m.csv"))
+//                    .limit(2)
+//                    .forEach(System.out::println);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

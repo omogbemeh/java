@@ -1,4 +1,0 @@
-This is a text document with a list.
-1. Item one.
-2. Item two.
-3. Item three.
