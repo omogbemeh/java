@@ -8,7 +8,7 @@ public class Employee {
     private final String gender;
     private final String email;
 
-    public Employee(String firstName, String lastName, int empID, int salary, String gender, String email) {
+    public Employee(String firstName, String lastName, int empID, int salary, String gender, String email, String state) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.empID = empID;
@@ -24,8 +24,9 @@ public class Employee {
         String lastName = empInfoArr[2];
         String gender = empInfoArr[5];
         String email = empInfoArr[6];
+        String state = empInfoArr[32];
         int salary = Integer.parseInt(empInfoArr[25]);
-        return new Employee(firstName, lastName, empID, salary, gender, email);
+        return new Employee(firstName, lastName, empID, salary, gender, email, state);
     }
 
     public String getFirstName() {
