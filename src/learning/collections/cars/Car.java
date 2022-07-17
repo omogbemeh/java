@@ -1,5 +1,8 @@
 package learning.collections.cars;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.*;
 
 public class Car {
@@ -7,6 +10,8 @@ public class Car {
     private static final List<Car> cars = new ArrayList<>();
     private final String make;
     private final String model;
+    private final BigDecimal price;
+    private final LocalDate year;
 
     public String getMake() {
         return this.make;
@@ -16,9 +21,11 @@ public class Car {
         return this.model;
     }
 
-    public Car(String make, String model) {
+    public Car(String make, String model, BigDecimal price, LocalDate year) {
         this.make = make;
         this.model = model;
+        this.price = price;
+        this.year = year;
     }
 
     public static void main(String[] models) {
@@ -55,11 +62,11 @@ public class Car {
     }
 
     public static void createAndPrint5Cars() {
-        Car car1 = new Car("toyota", "camry");
-        Car car2 = new Car("mercedes-benz", "c-class");
-        Car car3 = new Car("audi", "s4");
-        Car car4 = new Car("ferrari", "enzo");
-        Car car5 = new Car("lamborghini", "aventador");
+        Car car1 = new Car("toyota", "camry", new BigDecimal("15000"), LocalDate.of(2009, Month.JANUARY, 1));
+        Car car2 = new Car("mercedes-benz", "c-class", new BigDecimal("23000"), LocalDate.of(2016, Month.DECEMBER, 23));
+        Car car3 = new Car("audi", "s4", new BigDecimal("17000"), LocalDate.of(2011, Month.FEBRUARY, 12));
+        Car car4 = new Car("ferrari", "enzo", new BigDecimal("700000"), LocalDate.of(2002, Month.JANUARY, 2));
+        Car car5 = new Car("lamborghini", "aventador", new BigDecimal("500000"), LocalDate.of(2018, Month.APRIL, 4));
 
         cars.add(car1);
         cars.add(car2);
@@ -69,26 +76,34 @@ public class Car {
 
     }
 
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public LocalDate getYear() {
+        return year;
+    }
+
     public static void printCarSet() {
-        Car car1 = new Car("toyota", "camry");
-        Car car2 = new Car("mercedes-benz", "c-class");
-        Car car3 = new Car("audi", "s4");
-        Car car4 = new Car("ferrari", "enzo");
-        Car car5 = new Car("lamborghini", "aventador");
-        Car car6 = new Car("lamborghini", "aventador");
-
-        Set<Car> cars = new HashSet<>();
-
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
-        cars.add(car4);
-        cars.add(car5);
-        cars.add(car6);
-
-        for (Car car : cars) {
-            System.out.println(car);
-        }
+//        Car car1 = new Car("toyota", "camry", price, year);
+//        Car car2 = new Car("mercedes-benz", "c-class", price, year);
+//        Car car3 = new Car("audi", "s4", price, year);
+//        Car car4 = new Car("ferrari", "enzo", price, year);
+//        Car car5 = new Car("lamborghini", "aventador", price, year);
+//        Car car6 = new Car("lamborghini", "aventador", price, year);
+//
+//        Set<Car> cars = new HashSet<>();
+//
+//        cars.add(car1);
+//        cars.add(car2);
+//        cars.add(car3);
+//        cars.add(car4);
+//        cars.add(car5);
+//        cars.add(car6);
+//
+//        for (Car car : cars) {
+//            System.out.println(car);
+//        }
     }
 
     public static void assignOwner() {
